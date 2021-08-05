@@ -19,4 +19,9 @@ case $1 in
     *.PDF|*.SVG)
         firefox --private-window "$1"
     ;;
+
+    *.xcf|\
+    *.XCF)
+        gimp "$1"
+    ;;
 esac

@@ -1,25 +1,7 @@
 #!/bin/bash
 
-IFS=,
-
-while read -r l f; do
-    l=${l// }
-    l=${l//.}
-    l=${l//-}
-    l=${l//\"}
-    l=${l//\'}
-    l=${l//é/e}
-    l=${l//Ñ/N}
-    l=${l,,}
-
-    f=$(echo "$f" | awk '{ print $1$2 }')
-    f=${f//.}
-    f=${f//-}
-    f=${f//\"}
-    f=${f//\'}
-    f=${f//é/e}
-    f=${f//Ñ/N}
-    f=${f,,}
-
-    printf '%s\n' "$f.$l.shs@ust.edu.ph"
-done | xclip -sel clip
+sed "s/^\(.*\)$/\L\1/g;
+     s/^\(.*,\ \S*\ \S*\).*$/\1/g;
+     s/[ '\.\"-]//g;
+     y/éñ/en/;
+     s/^\(.*\),\(.*\)$/\2\.\1\.shs\@ust\.edu\.ph/g" | xclip -sel clip

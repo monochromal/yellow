@@ -1,13 +1,5 @@
 #!/bin/sh -e
 
-ngk_tmp=/tmp/ngk_$$.m3u
+find ~/music/anime -type f |
 
-(
-    cd ~/music/anime
-
-    find "$PWD" -type f |
-    grep -iv "Machikado Mazoku Original Soundtrack\|instrumental\|off vocal\|\.jpg\|\.png\|karaoke\|tv-size" |
-    sort > "$ngk_tmp"
-)
-
-mpv --no-audio-display --shuffle "$ngk_tmp"
+mpv --no-audio-display --playlist=- --shuffle

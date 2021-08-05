@@ -1,0 +1,3 @@
+#!/bin/sh
+
+scrcpy -S --window-x 160 --window-y 90

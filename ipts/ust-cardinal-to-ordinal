@@ -3,12 +3,7 @@
 sed 's/1$/1st/g;
      s/2$/2nd/g;
      s/3$/3rd/g;
-     s/4$/4th/g;
-     s/5$/5th/g;
-     s/6$/6th/g;
-     s/7$/7th/g;
-     s/8$/8th/g;
-     s/9$/9th/g;
+     s/\([4-9]\)$/\1th/g;
      s/0$/0th/g;
      s/11st$/11th/g;
      s/12nd$/12th/g;

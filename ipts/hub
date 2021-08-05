@@ -2,7 +2,26 @@
 #
 # Lazy git.
 #
-# Requires: git
+# Requires: git, laziness
+
+hub_usage=\
+"usage: hub [a] [b] [c <repo>] [d <path> <commit message>] [f] [m] [n <branch>]
+           [p <branch> <commit message>] [r] [u <repo>] [x <repo>]
+
+    a  normal add, commit, and push
+    b  list all branches
+    c  clone <repo>
+    d  generate a diff (patch)
+    f  normal fetch, merge, and push
+    m  go back to master branch
+    n  create/go to <branch>
+    p  push to <branch>
+    r  clean repo
+    u  add <repo> as upsteam
+    x  reset <repo>
+
+common usecases:
+    making a PR  (fork & clone) -> u -> f -> n -> (make changes) -> p"
 
 case $1 in
     a)  git add .
@@ -14,6 +33,11 @@ case $1 in
     c)  [ -z "$2" ] && exit
         git clone "https://github.com/$2" ;;
 
+    d)  [ -z "$2" ] && exit
+        git add .
+        git commit -m "$3"
+        git format-patch --stdout HEAD^ > "$2" ;;
+
     f)  git fetch upstream
         git merge upstream/master
         git push origin master ;;
@@ -23,7 +47,7 @@ case $1 in
     n)  [ -z "$2" ] && exit
         git checkout -b "$2" ;;
 
-    p)  [ -z "$2" ] && [ -z "$3" ] && exit
+    p)  [ -z "$2" ] && exit
         git add .
         git commit -m "$3"
         git push --set-upstream origin "$2" ;;
@@ -41,4 +65,6 @@ case $1 in
         git commit -m init
         git remote add origin "https://github.com/$2.git"
         git push -u --force origin master ;;
+
+    *)  printf '%s\n' "$hub_usage" ;;
 esac

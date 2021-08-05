@@ -1,7 +1,0 @@
-#!/bin/bash
-
-IFS=,
-
-while read -r _ f; do
-    printf '%s\n' "$f"
-done | xclip -sel clip

@@ -5,4 +5,4 @@
     exit 1
 }
 
-curl -fLo /etc/hosts https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts
+curl -fLo /etc/hosts https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/fakenews/hosts

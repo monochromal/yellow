@@ -5,8 +5,8 @@
 dmenu_run \
     -i \
     -m 0 \
-    -fn "monospace:pixelsize=13"
-    # -nb "#303030" \
-    # -nf "#c5c8c6" \
-    # -sb "#c5c8c6" \
-    # -sf "#303030"
+    -fn "monospace:pixelsize=13" \
+    -nb "#1d1f21" \
+    -nf "#c5c8c6" \
+    -sb "#c5c8c6" \
+    -sf "#1d1f21"

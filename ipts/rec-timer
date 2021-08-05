@@ -1,0 +1,15 @@
+#!/bin/sh
+
+echo "Starting in 5s..."
+sleep 1s
+echo "Starting in 4s..."
+sleep 1s
+echo "Starting in 3s..."
+sleep 1s
+echo "Starting in 2s..."
+sleep 1s
+echo "Starting in 1s..."
+sleep 1s
+echo "Your screen is now recording."
+
+rec

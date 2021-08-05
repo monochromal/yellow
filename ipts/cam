@@ -4,10 +4,15 @@
 #
 # Requires: mpv
 
+cam_dev=av://v4l2:/dev/video0
+
 pkill -f /dev/video0 || mpv \
-    --autofit=20% \
+    --autofit=25% \
     --config=no \
     --geometry=-10-10 \
     --input-default-bindings=no \
     --osc=no \
-    --vf=hflip /dev/video0 >/dev/null 2>&1
+    --profile=low-latency \
+    --untimed \
+    --vf=hflip \
+    --x11-name=mpv-webcam "$cam_dev" # >/dev/null 2>&1
